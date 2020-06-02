@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="E:\generatorUtil\mysql-connector-java-5.1.22.jar"/>
+    <context id="testTables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <!--抑制生成注释，由于生成的注释都是英文的，可以不让它生成-->
+            <!--<property name="suppressAllComments" value="true"/>-->
+            <!-- 设置文件编码，如果不设置中文会乱码 -->
+            <property name="javaFileEncoding" value="UTF-8"/>
+        </commentGenerator>
+
+        <!-- <plugin type="com.nineonesteel.shipping.common.mybatis.plugin.SerializablePlugin"/> -->
+
+        <!-- 配置类 -->
+        <!--<commentGenerator type="com.xxx.xxx.common.utils.DefaultCommentGenerator">-->
+        <!--&lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;-->
+        <!--<property name="suppressAllComments" value="false" />-->
+        <!--</commentGenerator>-->
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.107.161.79:3306/storageroom?useUnicode=true&amp;characterEncoding=utf8&amp;allowMultiQueries=true&amp;autoReconnect=true&amp;useSSL=false&amp;verifyServerCertificate=false"
+                        userId="root" password="123456">
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.chenxin.spring.boot.entity"
+                            targetProject="E:\project\storageRoom\src\main\java\">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="E:\project\storageRoom\src\main\resources">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.chenxin.spring.boot.mapper"
+                             targetProject="E:\project\storageRoom\src\main\java\">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <!-- 指定数据库表 -->
+
+        <!--<table tableName="%" domainObjectName="ScheduleJobPO">-->
+        <!--&lt;!&ndash;<generatedKey column="xxx_id" sqlStatement="MySql" identity="true"/>&ndash;&gt;-->
+        <!--</table>-->
+
+         <!--<table tableName="t_applet_brand_function_rel" domainObjectName="AppletBrandFunctionRelPO">
+            <generatedKey column="applet_brand_function_rel_id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--<table tableName="t_applet_brand_template_rel" domainObjectName="AppletBrandTemplateRelPO">-->
+            <!--<generatedKey column="applet_brand_template_rel_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+         <table tableName="user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <!--<table tableName="t_applet_resources" domainObjectName="AppletResourcesPO">-->
+            <!--<generatedKey column="applet_resources_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_applet_template" domainObjectName="AppletTemplatePO">-->
+            <!--<generatedKey column="applet_template_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_applet_vip_card" domainObjectName="AppletVipCartPO">-->
+            <!--<generatedKey column="applet_vip_card_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--  <table tableName="t_applet_vip_privilege" domainObjectName="AppletVipPrivilegePO">
+             <generatedKey column="applet_vip_privilege_id" sqlStatement="MySql" identity="true"/>
+         </table> -->
+        <!--<table tableName="t_applet_brand_theme" domainObjectName="AppletBrandThemePO">-->
+            <!--<generatedKey column="applet_brand_theme_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_sys_qiniu_config" domainObjectName="SysQiNiuConfigPo">-->
+            <!--<generatedKey column="sys_qiniu_config_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+
+    </context>
+</generatorConfiguration>
