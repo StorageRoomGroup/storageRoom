@@ -30,6 +30,7 @@ public class Application  extends SpringBootServletInitializer implements Embedd
 	 */
     public static void main(String ... args){
         SpringApplication.run(Application.class, args);
+
     }
 
     /**
