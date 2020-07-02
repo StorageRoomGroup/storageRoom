@@ -22,10 +22,9 @@ spring:
         max-wait: 100000
 # Mybatis mapper 映射路径配置
 mybatis:
-  type-aliases-package: com.chenxin.spring.boot.mapper
-  mapper-locations: classpath:mapper/*.xml
   configLocation: classpath:mybatis-config.xml
-    
+  mapper-locations: classpath:mapper/*.xml
+
 # 日志输出
 logging: 
     file: D:/boot.log

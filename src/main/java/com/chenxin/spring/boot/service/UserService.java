@@ -1,7 +1,9 @@
 package com.chenxin.spring.boot.service;
 
 import com.chenxin.spring.boot.entity.User;
+import com.chenxin.spring.boot.utils.BaseResult;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -10,6 +12,11 @@ import java.util.List;
 
 public interface UserService {
 
-     List<User> list();
+    BaseResult<List<User>> list();
+
+    BaseResult add(User user);
+
+    BaseResult login(User user, HttpSession httpSession);
+
 
 }

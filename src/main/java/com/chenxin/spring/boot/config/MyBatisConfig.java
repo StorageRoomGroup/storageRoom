@@ -4,9 +4,12 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 
 /**
@@ -20,12 +23,14 @@ public class MyBatisConfig {
     @Autowired
     private DataSourceProperties dataSourceProperties;
 
+    @Value("${mybatis.mapper-locations}")
+    private String path;
+
 
     @Bean(name = "dataSource")
     public DruidDataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(dataSourceProperties.getUrl());
-
         dataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
         dataSource.setUsername(dataSourceProperties.getUsername());
         dataSource.setPassword(dataSourceProperties.getPassword());
@@ -38,6 +43,8 @@ public class MyBatisConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
+        Resource[] resources = new PathMatchingResourcePatternResolver().getResources(path);
+        sqlSessionFactoryBean.setMapperLocations(resources);
         return sqlSessionFactoryBean.getObject();
     }
 }
