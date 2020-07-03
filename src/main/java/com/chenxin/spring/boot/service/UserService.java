@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface UserService {
 
-    BaseResult<List<User>> list();
+    BaseResult<List<User>> list(User user);
 
     BaseResult add(User user);
 
